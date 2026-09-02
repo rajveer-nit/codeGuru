@@ -1,0 +1,426 @@
+[
+  {
+    "problem": {
+      "contestId": 2176,
+      "index": "D",
+      "name": "Fibonacci Paths",
+      "type": "PROGRAMMING",
+      "points": 2000.0,
+      "rating": 1800,
+      "tags": [
+        "data structures",
+        "dp",
+        "graphs",
+        "sortings"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2176,
+      "index": "C",
+      "name": "Odd Process",
+      "type": "PROGRAMMING",
+      "points": 1500.0,
+      "rating": 1300,
+      "tags": [
+        "greedy",
+        "sortings"
+      ]
+    },
+    "verdict": "OK"
+  },
+  {
+    "problem": {
+      "contestId": 2176,
+      "index": "A",
+      "name": "Operations with Inversions",
+      "type": "PROGRAMMING",
+      "points": 500.0,
+      "rating": 800,
+      "tags": [
+        "greedy",
+        "implementation",
+        "math"
+      ]
+    },
+    "verdict": "OK"
+  },
+  {
+    "problem": {
+      "contestId": 212,
+      "index": "B",
+      "name": "Polycarpus is Looking for Good Substrings",
+      "type": "PROGRAMMING",
+      "points": 2000.0,
+      "rating": 2300,
+      "tags": [
+        "bitmasks",
+        "hashing",
+        "implementation"
+      ]
+    },
+    "verdict": "TIME_LIMIT_EXCEEDED"
+  },
+  {
+    "problem": {
+      "contestId": 212,
+      "index": "B",
+      "name": "Polycarpus is Looking for Good Substrings",
+      "type": "PROGRAMMING",
+      "points": 2000.0,
+      "rating": 2300,
+      "tags": [
+        "bitmasks",
+        "hashing",
+        "implementation"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2158,
+      "index": "C",
+      "name": "Annoying Game",
+      "type": "PROGRAMMING",
+      "points": 1500.0,
+      "rating": 1400,
+      "tags": [
+        "dp",
+        "games",
+        "greedy"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2158,
+      "index": "C",
+      "name": "Annoying Game",
+      "type": "PROGRAMMING",
+      "points": 1500.0,
+      "rating": 1400,
+      "tags": [
+        "dp",
+        "games",
+        "greedy"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2158,
+      "index": "C",
+      "name": "Annoying Game",
+      "type": "PROGRAMMING",
+      "points": 1500.0,
+      "rating": 1400,
+      "tags": [
+        "dp",
+        "games",
+        "greedy"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2158,
+      "index": "C",
+      "name": "Annoying Game",
+      "type": "PROGRAMMING",
+      "points": 1500.0,
+      "rating": 1400,
+      "tags": [
+        "dp",
+        "games",
+        "greedy"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2158,
+      "index": "C",
+      "name": "Annoying Game",
+      "type": "PROGRAMMING",
+      "points": 1500.0,
+      "rating": 1400,
+      "tags": [
+        "dp",
+        "games",
+        "greedy"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2158,
+      "index": "B",
+      "name": "Split",
+      "type": "PROGRAMMING",
+      "points": 1250.0,
+      "rating": 1200,
+      "tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+      ]
+    },
+    "verdict": "OK"
+  },
+  {
+    "problem": {
+      "contestId": 2158,
+      "index": "A",
+      "name": "Suspension",
+      "type": "PROGRAMMING",
+      "points": 500.0,
+      "rating": 800,
+      "tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+      ]
+    },
+    "verdict": "OK"
+  },
+  {
+    "problem": {
+      "contestId": 1599,
+      "index": "H",
+      "name": "Hidden Fortress",
+      "type": "PROGRAMMING",
+      "rating": 2100,
+      "tags": [
+        "interactive",
+        "math"
+      ]
+    },
+    "verdict": "OK"
+  },
+  {
+    "problem": {
+      "contestId": 411,
+      "index": "C",
+      "name": "Kicker",
+      "type": "PROGRAMMING",
+      "rating": 1700,
+      "tags": [
+        "*special",
+        "implementation"
+      ]
+    },
+    "verdict": "OK"
+  },
+  {
+    "problem": {
+      "contestId": 411,
+      "index": "C",
+      "name": "Kicker",
+      "type": "PROGRAMMING",
+      "rating": 1700,
+      "tags": [
+        "*special",
+        "implementation"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 4,
+      "index": "A",
+      "name": "Watermelon",
+      "type": "PROGRAMMING",
+      "rating": 800,
+      "tags": [
+        "brute force",
+        "math"
+      ]
+    },
+    "verdict": "OK"
+  },
+  {
+    "problem": {
+      "contestId": 411,
+      "index": "C",
+      "name": "Kicker",
+      "type": "PROGRAMMING",
+      "rating": 1700,
+      "tags": [
+        "*special",
+        "implementation"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 4,
+      "index": "A",
+      "name": "Watermelon",
+      "type": "PROGRAMMING",
+      "rating": 800,
+      "tags": [
+        "brute force",
+        "math"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2165,
+      "index": "A",
+      "name": "Cyclic Merging",
+      "type": "PROGRAMMING",
+      "points": 500.0,
+      "rating": 1300,
+      "tags": [
+        "constructive algorithms",
+        "greedy"
+      ]
+    },
+    "verdict": "OK"
+  },
+  {
+    "problem": {
+      "contestId": 2165,
+      "index": "A",
+      "name": "Cyclic Merging",
+      "type": "PROGRAMMING",
+      "points": 500.0,
+      "rating": 1300,
+      "tags": [
+        "constructive algorithms",
+        "greedy"
+      ]
+    },
+    "verdict": "TIME_LIMIT_EXCEEDED"
+  },
+  {
+    "problem": {
+      "contestId": 2165,
+      "index": "A",
+      "name": "Cyclic Merging",
+      "type": "PROGRAMMING",
+      "points": 500.0,
+      "rating": 1300,
+      "tags": [
+        "constructive algorithms",
+        "greedy"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2165,
+      "index": "A",
+      "name": "Cyclic Merging",
+      "type": "PROGRAMMING",
+      "points": 500.0,
+      "rating": 1300,
+      "tags": [
+        "constructive algorithms",
+        "greedy"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2165,
+      "index": "A",
+      "name": "Cyclic Merging",
+      "type": "PROGRAMMING",
+      "points": 500.0,
+      "rating": 1300,
+      "tags": [
+        "constructive algorithms",
+        "greedy"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2162,
+      "index": "H",
+      "name": "Beautiful Problem",
+      "type": "PROGRAMMING",
+      "rating": 2900,
+      "tags": [
+        "dp"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2162,
+      "index": "H",
+      "name": "Beautiful Problem",
+      "type": "PROGRAMMING",
+      "rating": 2900,
+      "tags": [
+        "dp"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  },
+  {
+    "problem": {
+      "contestId": 2162,
+      "index": "H",
+      "name": "Beautiful Problem",
+      "type": "PROGRAMMING",
+      "rating": 2900,
+      "tags": [
+        "dp"
+      ]
+    },
+    "verdict": "COMPILATION_ERROR"
+  },
+  {
+    "problem": {
+      "contestId": 1982,
+      "index": "B",
+      "name": "Collatz Conjecture",
+      "type": "PROGRAMMING",
+      "points": 1000.0,
+      "rating": 1200,
+      "tags": [
+        "brute force",
+        "implementation",
+        "math",
+        "number theory"
+      ]
+    },
+    "verdict": "TIME_LIMIT_EXCEEDED"
+  },
+  {
+    "problem": {
+      "contestId": 1982,
+      "index": "A",
+      "name": "Soccer",
+      "type": "PROGRAMMING",
+      "points": 500.0,
+      "rating": 800,
+      "tags": [
+        "greedy",
+        "implementation",
+        "math",
+        "sortings"
+      ]
+    },
+    "verdict": "WRONG_ANSWER"
+  }
+]
