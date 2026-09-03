@@ -99,7 +99,7 @@ def score_candidates(
 
 
 if __name__ == "__main__":
-    handle = "tourist"  # replace with your own handle
+    handle = "DNR"  # replace with your own handle
 
     catalog = load_json(CACHE_DIR / "problems.json")
     history = load_json(CACHE_DIR / f"user_{handle}.json")

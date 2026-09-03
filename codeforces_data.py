@@ -97,7 +97,7 @@ if __name__ == "__main__":
     # Quick manual test - replace "tourist" with your own CF handle
     problems = fetch_problem_catalog()
     time.sleep(1)  # be polite between calls
-    history = fetch_user_history("rajveer_lko")
+    history = fetch_user_history("DNR")
 
     solved_count = len({
         (s["problem"]["contestId"], s["problem"]["index"])

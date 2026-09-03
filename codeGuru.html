@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>codeGuru — next problem, picked for you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B1120;
+    --surface: #141B2E;
+    --surface-raised: #1B233A;
+    --border: #232C42;
+    --text: #E7ECF5;
+    --text-muted: #8B93A7;
+    --accent: #4C8DFF;
+    --weak: #E0483E;
+    --strong: #3BA845;
+
+    --tier-newbie: #9AA0A8;
+    --tier-pupil: #3BA845;
+    --tier-specialist: #17A2A8;
+    --tier-expert: #3F6FD1;
+    --tier-cm: #A24BC9;
+    --tier-master: #E08A2E;
+    --tier-gm: #E0483E;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    line-height: 1.5;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+
+  header.brand {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .wordmark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .tagline {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    padding: 12px 14px;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  input[type="text"]:focus {
+    border-color: var(--accent);
+  }
+
+  input[type="text"]::placeholder {
+    color: #5A6280;
+  }
+
+  button {
+    background: var(--accent);
+    color: #0B1120;
+    border: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 22px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover { filter: brightness(1.08); }
+  button:disabled { opacity: 0.5; cursor: default; }
+  button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .hint {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin: 0 0 36px;
+  }
+
+  .status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--text-muted);
+    padding: 16px 0;
+  }
+
+  .error {
+    color: var(--weak);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    padding: 14px 16px;
+    background: rgba(224, 72, 62, 0.08);
+    border: 1px solid rgba(224, 72, 62, 0.35);
+    border-radius: 4px;
+  }
+
+  section { display: none; margin-top: 40px; }
+  section.visible { display: block; }
+
+  .profile-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .profile-line strong { color: var(--text); font-weight: 500; }
+
+  h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin: 0 0 16px;
+    text-transform: none;
+  }
+
+  .heatmap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag-cell {
+    padding: 6px 10px;
+    border-radius: 3px;
+    font-size: 12.5px;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  .rec-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+
+  .rec-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .rec-name {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .rec-name a { color: var(--text); text-decoration: none; }
+  .rec-name a:hover { text-decoration: underline; }
+
+  .rating-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 3px;
+    color: #0B1120;
+    flex-shrink: 0;
+  }
+
+  .rec-tags {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .rec-why {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .rec-why b { color: var(--text); font-weight: 500; }
+
+  .metrics-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  .metrics-row b { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="brand">
+    <div class="wordmark">codeGuru</div>
+    <div class="tagline">next rep, right after your last one</div>
+  </header>
+
+  <div class="input-row">
+    <input type="text" id="handle-input" placeholder="Codeforces handle" autocomplete="off">
+    <button id="go-btn">Get recommendations</button>
+  </div>
+  <p class="hint">Pulls your public Codeforces submission history — nothing is stored.</p>
+
+  <div id="status" class="status"></div>
+  <div id="error-box"></div>
+
+  <section id="profile-section">
+    <div class="profile-line"><strong id="profile-solved"></strong> unique problems solved · avg rating <strong id="profile-avg"></strong></div>
+  </section>
+
+  <section id="heatmap-section">
+    <h2>Tag mastery — weakest first</h2>
+    <div class="heatmap" id="heatmap"></div>
+  </section>
+
+  <section id="rec-section">
+    <h2>Recommended next</h2>
+    <div id="rec-list"></div>
+    <div class="metrics-row" id="metrics-row"></div>
+  </section>
+
+</div>
+
+<script>
+// ---------------------------------------------------------------------
+// Config — mirrors the Python prototype's tunable knobs
+// ---------------------------------------------------------------------
+const GROWTH_MARGIN = 150;
+const DIFFICULTY_TOLERANCE = 250;
+const WEAK_TAG_WEIGHT = 0.6;
+const DIFFICULTY_WEIGHT = 0.4;
+const WEAK_TAG_THRESHOLD = 0.7;
+const TOP_K = 5;
+const MAX_PER_TAG = 2;
+
+// ---------------------------------------------------------------------
+// Data fetching - via OUR OWN backend proxy (app.py), not codeforces.com
+// directly. Codeforces' API doesn't send CORS headers, so a browser can't
+// call it cross-origin; our backend fetches it server-side instead, where
+// CORS doesn't apply, and hands us back the same-shaped JSON.
+// ---------------------------------------------------------------------
+async function fetchProblemCatalog() {
+  const res = await fetch('/api/problems');
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch problem catalog');
+  return data;
+}
+
+async function fetchUserHistory(handle) {
+  const res = await fetch(`/api/history/${encodeURIComponent(handle)}`);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Failed to fetch user history');
+  return data;
+}
+
+// ---------------------------------------------------------------------
+// Step 2: mastery
+// ---------------------------------------------------------------------
+function computeMastery(history) {
+  const solved = new Map(); // key -> problem
+  for (const sub of history) {
+    if (sub.verdict !== 'OK') continue;
+    const p = sub.problem;
+    solved.set(`${p.contestId}-${p.index}`, p);
+  }
+  const solvedList = Array.from(solved.values()).filter(p => typeof p.rating === 'number');
+  if (solvedList.length === 0) {
+    throw new Error('This handle has no RATED solved problems yet — nothing to score.');
+  }
+
+  const overallAvg = solvedList.reduce((s, p) => s + p.rating, 0) / solvedList.length;
+
+  const ratingsByTag = {};
+  for (const p of solvedList) {
+    for (const tag of p.tags) {
+      (ratingsByTag[tag] ||= []).push(p.rating);
+    }
+  }
+
+  const tags = {};
+  for (const [tag, ratings] of Object.entries(ratingsByTag)) {
+    const avgRating = ratings.reduce((a, b) => a + b, 0) / ratings.length;
+    const mastery = Math.min(1, avgRating / overallAvg);
+    tags[tag] = { solvedCount: ratings.length, avgRating, mastery };
+  }
+
+  return { overallAvgRating: overallAvg, tags, solvedCount: solvedList.length };
+}
+
+// ---------------------------------------------------------------------
+// Step 3: score every unseen problem
+// ---------------------------------------------------------------------
+function scoreCandidates(catalog, history, mastery) {
+  const attempted = new Set(history.map(s => `${s.problem.contestId}-${s.problem.index}`));
+  const masteryLookup = Object.fromEntries(
+    Object.entries(mastery.tags).map(([t, info]) => [t, info.mastery])
+  );
+
+  const scored = [];
+  for (const p of catalog) {
+    const key = `${p.contestId}-${p.index}`;
+    if (attempted.has(key)) continue;
+
+    const gaps = p.tags.length
+      ? p.tags.map(t => 1 - (masteryLookup[t] ?? 0))
+      : [0];
+    const weakTagScore = gaps.reduce((a, b) => a + b, 0) / gaps.length;
+
+    const target = mastery.overallAvgRating + GROWTH_MARGIN;
+    const distance = Math.abs(p.rating - target);
+    const difficultyScore = Math.max(0, Math.min(1, 1 - distance / DIFFICULTY_TOLERANCE));
+
+    const finalScore = WEAK_TAG_WEIGHT * weakTagScore + DIFFICULTY_WEIGHT * difficultyScore;
+
+    scored.push({ problem: p, weakTagScore, difficultyScore, finalScore });
+  }
+  return scored;
+}
+
+// ---------------------------------------------------------------------
+// Step 4: heap-based top-k with tag diversity
+// A small binary max-heap keyed on finalScore. Construction here is
+// O(n log n) via repeated push (simple to read); a true heapify would be
+// O(n). Either way, popping only the k we need beats sorting the full
+// candidate list once n gets large.
+// ---------------------------------------------------------------------
+class MaxHeap {
+  constructor() { this.arr = []; }
+  size() { return this.arr.length; }
+  push(item) {
+    this.arr.push(item);
+    let i = this.arr.length - 1;
+    while (i > 0) {
+      const parent = (i - 1) >> 1;
+      if (this.arr[i].finalScore > this.arr[parent].finalScore) {
+        [this.arr[i], this.arr[parent]] = [this.arr[parent], this.arr[i]];
+        i = parent;
+      } else break;
+    }
+  }
+  pop() {
+    const top = this.arr[0];
+    const end = this.arr.pop();
+    if (this.arr.length) {
+      this.arr[0] = end;
+      let i = 0;
+      const n = this.arr.length;
+      while (true) {
+        let l = 2 * i + 1, r = 2 * i + 2, best = i;
+        if (l < n && this.arr[l].finalScore > this.arr[best].finalScore) best = l;
+        if (r < n && this.arr[r].finalScore > this.arr[best].finalScore) best = r;
+        if (best === i) break;
+        [this.arr[i], this.arr[best]] = [this.arr[best], this.arr[i]];
+        i = best;
+      }
+    }
+    return top;
+  }
+}
+
+function selectTopK(scored, k, maxPerTag) {
+  const heap = new MaxHeap();
+  for (const c of scored) heap.push(c);
+
+  const tagCounts = {};
+  const selected = [];
+
+  while (heap.size() && selected.length < k) {
+    const candidate = heap.pop();
+    const overCap = candidate.problem.tags.some(t => (tagCounts[t] || 0) >= maxPerTag);
+    if (overCap) continue;
+
+    selected.push(candidate);
+    for (const t of candidate.problem.tags) tagCounts[t] = (tagCounts[t] || 0) + 1;
+  }
+  return selected;
+}
+
+// ---------------------------------------------------------------------
+// Rendering helpers
+// ---------------------------------------------------------------------
+function tierColor(rating) {
+  if (rating < 1200) return 'var(--tier-newbie)';
+  if (rating < 1400) return 'var(--tier-pupil)';
+  if (rating < 1600) return 'var(--tier-specialist)';
+  if (rating < 1900) return 'var(--tier-expert)';
+  if (rating < 2100) return 'var(--tier-cm)';
+  if (rating < 2400) return 'var(--tier-master)';
+  return 'var(--tier-gm)';
+}
+
+function masteryColor(mastery) {
+  // linear interpolation: weak (red) -> strong (green)
+  const weak = [224, 72, 62];
+  const strong = [59, 168, 69];
+  const mix = weak.map((c, i) => Math.round(c + (strong[i] - c) * mastery));
+  return `rgb(${mix.join(',')})`;
+}
+
+function renderHeatmap(mastery, allCatalogTags) {
+  const tags = { ...mastery.tags };
+  for (const t of allCatalogTags) {
+    if (!(t in tags)) tags[t] = { solvedCount: 0, avgRating: null, mastery: 0 };
+  }
+  const sorted = Object.entries(tags).sort((a, b) => a[1].mastery - b[1].mastery);
+
+  const el = document.getElementById('heatmap');
+  el.innerHTML = '';
+  for (const [tag, info] of sorted) {
+    const cell = document.createElement('div');
+    cell.className = 'tag-cell';
+    const color = masteryColor(info.mastery);
+    cell.style.background = `${color}22`;
+    cell.style.borderColor = `${color}55`;
+    cell.style.color = color;
+    cell.textContent = `${tag} · ${info.solvedCount}`;
+    el.appendChild(cell);
+  }
+}
+
+function renderRecommendations(topK, mastery) {
+  const el = document.getElementById('rec-list');
+  el.innerHTML = '';
+
+  for (const c of topK) {
+    const p = c.problem;
+    const weakestTags = [...p.tags]
+      .sort((a, b) => (mastery.tags[a]?.mastery ?? 0) - (mastery.tags[b]?.mastery ?? 0))
+      .slice(0, 2);
+    const diff = p.rating - mastery.overallAvgRating;
+    const diffStr = (diff >= 0 ? '+' : '') + Math.round(diff);
+
+    const card = document.createElement('div');
+    card.className = 'rec-card';
+    card.innerHTML = `
+      <div class="rec-top">
+        <div class="rec-name"><a href="https://codeforces.com/problemset/problem/${p.contestId}/${p.index}" target="_blank" rel="noopener">${p.name}</a></div>
+        <div class="rating-badge" style="background:${tierColor(p.rating)}">${p.rating}</div>
+      </div>
+      <div class="rec-tags">${p.tags.join(' · ')}</div>
+      <div class="rec-why">
+        <div>targets weak tag(s): <b>${weakestTags.join(', ') || '—'}</b></div>
+        <div>difficulty ${diffStr} vs your avg solved rating (${Math.round(mastery.overallAvgRating)}) — a growth stretch</div>
+        <div>score: weak_tag=${c.weakTagScore.toFixed(2)} · difficulty=${c.difficultyScore.toFixed(2)} · final=${c.finalScore.toFixed(2)}</div>
+      </div>
+    `;
+    el.appendChild(card);
+  }
+}
+
+function renderMetrics(topK) {
+  const avgWeak = topK.reduce((s, c) => s + c.weakTagScore, 0) / topK.length;
+  const avgDiff = topK.reduce((s, c) => s + c.difficultyScore, 0) / topK.length;
+  const distinctTags = new Set(topK.flatMap(c => c.problem.tags));
+
+  document.getElementById('metrics-row').innerHTML = `
+    <span>avg weak-tag coverage: <b>${avgWeak.toFixed(2)}</b></span>
+    <span>avg difficulty fit: <b>${avgDiff.toFixed(2)}</b></span>
+    <span>distinct tags in top ${topK.length}: <b>${distinctTags.size}</b></span>
+  `;
+}
+
+// ---------------------------------------------------------------------
+// Orchestration
+// ---------------------------------------------------------------------
+const statusEl = document.getElementById('status');
+const errorBox = document.getElementById('error-box');
+const goBtn = document.getElementById('go-btn');
+const handleInput = document.getElementById('handle-input');
+
+function setStatus(msg) { statusEl.textContent = msg; }
+function setError(msg) {
+  errorBox.innerHTML = msg ? `<div class="error">${msg}</div>` : '';
+}
+function showSections(show) {
+  for (const id of ['profile-section', 'heatmap-section', 'rec-section']) {
+    document.getElementById(id).classList.toggle('visible', show);
+  }
+}
+
+let catalogCache = null;
+
+async function run() {
+  const handle = handleInput.value.trim();
+  if (!handle) return;
+
+  setError('');
+  showSections(false);
+  goBtn.disabled = true;
+
+  try {
+    setStatus('Fetching problem catalog…');
+    if (!catalogCache) catalogCache = await fetchProblemCatalog();
+
+    setStatus(`Fetching submission history for ${handle}…`);
+    const history = await fetchUserHistory(handle);
+
+    setStatus('Computing tag mastery…');
+    const mastery = computeMastery(history);
+
+    setStatus('Scoring candidate problems…');
+    const scored = scoreCandidates(catalogCache, history, mastery);
+
+    setStatus('Selecting top picks…');
+    const topK = selectTopK(scored, TOP_K, MAX_PER_TAG);
+
+    if (topK.length === 0) {
+      throw new Error('No unseen problems matched — try again later or widen the difficulty tolerance.');
+    }
+
+    document.getElementById('profile-solved').textContent = mastery.solvedCount;
+    document.getElementById('profile-avg').textContent = Math.round(mastery.overallAvgRating);
+
+    const allTags = new Set(catalogCache.flatMap(p => p.tags));
+    renderHeatmap(mastery, allTags);
+    renderRecommendations(topK, mastery);
+    renderMetrics(topK);
+
+    showSections(true);
+    setStatus('');
+  } catch (err) {
+    setError(err.message || 'Something went wrong.');
+    setStatus('');
+  } finally {
+    goBtn.disabled = false;
+  }
+}
+
+goBtn.addEventListener('click', run);
+handleInput.addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
+</script>
+</body>
+</html>

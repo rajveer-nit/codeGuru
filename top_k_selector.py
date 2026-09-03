@@ -79,7 +79,7 @@ def explain_recommendation(candidate: dict, mastery_data: dict) -> str:
 
 
 if __name__ == "__main__":
-    handle = "tourist"  # replace with your own handle
+    handle = "DNR"  # replace with your own handle
 
     scored = json.loads((CACHE_DIR / f"scored_{handle}.json").read_text())
     mastery_data = json.loads((CACHE_DIR / f"mastery_{handle}.json").read_text())

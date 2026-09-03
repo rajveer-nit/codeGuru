@@ -27,7 +27,7 @@ from pathlib import Path
 from statistics import mean
 
 CACHE_DIR = Path("cf_cache")
-WEAK_TAG_THRESHOLD = 0.7  # mastery below this counts as "weak" for coverage@k
+WEAK_TAG_THRESHOLD = 0.65  # mastery below this counts as "weak" for coverage@k
 
 
 def load_user_history(handle: str) -> list[dict]:
@@ -56,7 +56,7 @@ def compute_tag_mastery(history: list[dict]) -> dict:
     # unique problem identifier.
     solved_problems = {}
     for sub in history:
-        if sub["verdict"] != "OK":
+        if sub["verdict"] != "OK" or "rating" not in sub["problem"]:
             continue
         p = sub["problem"]
         key = (p["contestId"], p["index"])
@@ -119,7 +119,7 @@ def get_weak_tags(mastery_data: dict, all_catalog_tags: set[str], threshold: flo
 
 
 if __name__ == "__main__":
-    handle = "tourist"  # replace with your own handle
+    handle = "DNR"  # replace with your own handle
     history = load_user_history(handle)
     mastery_data = compute_tag_mastery(history)
 
