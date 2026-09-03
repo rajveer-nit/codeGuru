@@ -1,6 +1,4 @@
-lc/
 cf_cache/
-OLD/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
